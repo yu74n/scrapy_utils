@@ -30,7 +30,7 @@ vi <your_spider>/settings.py
 Add Middleware name to `DOWNLOADER_MIDDLEWARES` in settings.py like
 ```
 DOWNLOADER_MIDDLEWARES = {
-    'talent_scraper.middlewares.github_oauth.GithubOAuthMiddleware': 290,
+    '<your_spider>.middlewares.github_oauth.GithubOAuthMiddleware': 290,
 }
 ```
 
