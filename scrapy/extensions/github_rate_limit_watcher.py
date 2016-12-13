@@ -7,7 +7,7 @@ class GithubRateLimitWatcher(object):
         self.crawler = crawler
 
         self.close_on = {
-            'limitcount': crawler.settings.getfloat('GITHUB_RATE_LIMIT_WATCHER_LIMITCOUNT'),
+            'limitcount': crawler.settings.getint('GITHUB_RATE_LIMIT_WATCHER_LIMITCOUNT'),
             }
 
         if not any(self.close_on.values()):
