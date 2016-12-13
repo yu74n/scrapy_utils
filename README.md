@@ -1,9 +1,16 @@
 # scrapy_utils
+
+## Description
 Utilities for scrapy
 
 ## Module
-### GithubOAuthMiddleware
+### Middleware
+#### GithubOAuthMiddleware
 Make OAuth authentication with Github API token
+
+### Extension
+#### GithubRateLimitWatcher
+Watch GitHub Rate Limit in GitHub API header and close the connection for crawling if Rate Limit is over the limit user set in Scrapy setting file.
 
 ## Usage
 
@@ -44,3 +51,31 @@ class YourSpider(scrapy.Spider):
         ...
 ```
 
+### GithubRateLimitWatcher
+
+#### Setup
+Create the `extensions` directory under your spider folder.
+```bash
+mkdir -p <your_spider>/extensions
+```
+Copy github_oauth.py under the `extensions` directory.
+```bash
+git clone https://github.com/yu74n/scrapy_utils.git
+cp scrapy/extensions/github_rate_limit_watcher.py <your_spider>/extensions
+```
+Open your spider's setting.
+```bash
+vi <your_spider>/settings.py
+```
+
+Add Extension name to `EXTENSIONS` in settings.py like
+```
+EXTENSIONS = {
+    '<your_spider>.extensions.github_rate_limit_watcher.GithubRateLimitWatcher': 500,
+}
+```
+
+#### Setting
+##### GITHUB_RATE_LIMIT_WATCHER_LIMITCOUNT
+`X-RateLimit-Remaining`(please refer to [Rate Limit](https://developer.github.com/v3/#rate-limiting) describes the number of requests remaining you can send with GitHub API. 
+When `X-RateLimit-Remaining` reaches `GITHUB_RATE_LIMIT_WATCHER_LIMITCOUNT`, your crawler will be closed.
