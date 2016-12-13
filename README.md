@@ -77,5 +77,5 @@ EXTENSIONS = {
 
 #### Setting
 ##### GITHUB_RATE_LIMIT_WATCHER_LIMITCOUNT
-`X-RateLimit-Remaining`(please refer to [Rate Limit](https://developer.github.com/v3/#rate-limiting) describes the number of requests remaining you can send with GitHub API. 
+`X-RateLimit-Remaining`(please refer to [Rate Limit](https://developer.github.com/v3/#rate-limiting)) describes the number of requests remaining you can send with GitHub API. 
 When `X-RateLimit-Remaining` reaches `GITHUB_RATE_LIMIT_WATCHER_LIMITCOUNT`, your crawler will be closed.
